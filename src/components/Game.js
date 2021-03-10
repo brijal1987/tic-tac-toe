@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import Board from "./Board";
 
 const Game = () => {
@@ -27,9 +26,7 @@ const Game = () => {
     }
     const handleClick = (i) => {
         const boardCopy = [...board];
-        // If user click an occupied square or if game is won, return
         if (winner || boardCopy[i]) return;
-        // Put an X or an O in the clicked square
         boardCopy[i] = xIsNext ? "X" : "O";
         setBoard(boardCopy);
         setXisNext(!xIsNext);
@@ -41,7 +38,7 @@ const Game = () => {
         setXisNext(true)
     }
     const winner = calculateWinner(board);
-    const style = {
+    const resultStyle = {
         color: "blue",
         fontWeight: 900,
         display: "grid",
@@ -72,7 +69,7 @@ const Game = () => {
     return (
         <>
         <Board squares={board} onClick={handleClick} />
-        <div style={style}>
+        <div style={resultStyle}>
             {draw && !winner && (<button style={btnStyle} onClick={handleRestart}>Restart Game</button>)}
             <span style={spanStyle}>
                 {draw && !winner ? "Draw" : winner ? "Winner: " + winner : "Next Player: " + (xIsNext ? "X" : "O")}
