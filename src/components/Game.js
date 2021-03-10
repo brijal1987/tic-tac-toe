@@ -42,37 +42,41 @@ const Game = () => {
         color: "blue",
         fontWeight: 900,
         display: "grid",
-        margin: "0 auto",
+        margin: "15px auto",
 	    display: "grid",
         marginTop: "10px"
     }
     const btnStyle = {
         border: "2px solid blue",
         borderRadius: "10px",
-        width: "150px",
-        height: "30px",
-        margin: "0 auto",
+        width: "200px",
+        height: "50px",
+        margin: "15px auto",
         fontWeight:"700",
-        cursor: "pointer"
+        cursor: "pointer",
+        fontSize: "25px",
     }
     const spanStyle = {
         border: "2px solid blue",
         borderRadius: "10px",
-        width: "150px",
+        width: "200px",
         height: "30px",
         margin: "0 auto",
         fontWeight:"700",
         textAlign: "center",
         paddingTop: "10px",
-        marginTop: "10px"
+        paddingBottom: "10px",
+        fontSize: "25px",
+
     }
     return (
         <>
+        <h1 style={{color: "#99004C", width: "100%", display: "block", textAlign:"center", margin:"20px auto", textTransform: "uppercase"}}>Tic Tac Toe Game</h1>
         <Board squares={board} onClick={handleClick} />
         <div style={resultStyle}>
             {draw && !winner && (<button style={btnStyle} onClick={handleRestart}>Restart Game</button>)}
             <span style={spanStyle}>
-                {draw && !winner ? "Draw" : winner ? "Winner: " + winner : "Next Player: " + (xIsNext ? "X" : "O")}
+                {draw && !winner ? <span style={{color: "red"}}>Draw</span> : winner ? <span style={{color: "green"}}>Winner: {winner}</span> : "Next Player: " + (xIsNext ? "X" : "O")}
             </span>
         </div>
         </>
